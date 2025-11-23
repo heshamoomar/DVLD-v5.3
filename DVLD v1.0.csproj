@@ -1,0 +1,620 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{10BA502A-DE48-475D-828B-CE65AD50A2CA}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>DVLD_v1._0</RootNamespace>
+    <AssemblyName>DVLD v1.0</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AForge, Version=2.2.5.0, Culture=neutral, PublicKeyToken=c1db6ff4eaa06aeb, processorArchitecture=MSIL">
+      <HintPath>packages\AForge.2.2.5\lib\AForge.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Video, Version=2.2.5.0, Culture=neutral, PublicKeyToken=cbfb6e07d173c401, processorArchitecture=MSIL">
+      <HintPath>packages\AForge.Video.2.2.5\lib\AForge.Video.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Video.DirectShow, Version=2.2.5.0, Culture=neutral, PublicKeyToken=61ea4348d43881b7, processorArchitecture=MSIL">
+      <HintPath>packages\AForge.Video.DirectShow.2.2.5\lib\AForge.Video.DirectShow.dll</HintPath>
+    </Reference>
+    <Reference Include="Azure.Core, Version=1.38.0.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
+      <HintPath>packages\Azure.Core.1.38.0\lib\net472\Azure.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Azure.Identity, Version=1.11.4.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
+      <HintPath>packages\Azure.Identity.1.11.4\lib\netstandard2.0\Azure.Identity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.1.1.1\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.SqlClient, Version=5.0.0.0, Culture=neutral, PublicKeyToken=23ec7fc2d6eaa4a5, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Data.SqlClient.5.2.2\lib\net462\Microsoft.Data.SqlClient.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Identity.Client, Version=4.61.3.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Identity.Client.4.61.3\lib\net462\Microsoft.Identity.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Identity.Client.Extensions.Msal, Version=4.61.3.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Identity.Client.Extensions.Msal.4.61.3\lib\netstandard2.0\Microsoft.Identity.Client.Extensions.Msal.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Abstractions, Version=6.35.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.IdentityModel.Abstractions.6.35.0\lib\net472\Microsoft.IdentityModel.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.JsonWebTokens, Version=6.35.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.IdentityModel.JsonWebTokens.6.35.0\lib\net472\Microsoft.IdentityModel.JsonWebTokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Logging, Version=6.35.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.IdentityModel.Logging.6.35.0\lib\net472\Microsoft.IdentityModel.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Protocols, Version=6.35.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.IdentityModel.Protocols.6.35.0\lib\net472\Microsoft.IdentityModel.Protocols.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Protocols.OpenIdConnect, Version=6.35.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.IdentityModel.Protocols.OpenIdConnect.6.35.0\lib\net472\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=6.35.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.IdentityModel.Tokens.6.35.0\lib\net472\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ClientModel, Version=1.0.0.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
+      <HintPath>packages\System.ClientModel.1.0.0\lib\netstandard2.0\System.ClientModel.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.ConfigurationManager, Version=6.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Configuration.ConfigurationManager.6.0.1\lib\net461\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=6.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Diagnostics.DiagnosticSource.6.0.1\lib\net461\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=6.35.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\System.IdentityModel.Tokens.Jwt.6.35.0\lib\net472\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.AccessControl, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.IO.FileSystem.AccessControl.5.0.0\lib\net461\System.IO.FileSystem.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory.Data, Version=1.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Memory.Data.1.0.2\lib\net461\System.Memory.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.AccessControl, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.AccessControl.6.0.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.ProtectedData, Version=4.0.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.Cryptography.ProtectedData.4.7.0\lib\net461\System.Security.Cryptography.ProtectedData.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Permissions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.Permissions.6.0.0\lib\net461\System.Security.Permissions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Text.Encodings.Web, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Text.Encodings.Web.6.0.0\lib\net461\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Text.Json.4.7.2\lib\net461\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Applications\frmManage_Application_Types.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\frmManage_Application_Types.Designer.cs">
+      <DependentUpon>frmManage_Application_Types.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Applications\frmUpdate_Application_Fee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\frmUpdate_Application_Fee.Designer.cs">
+      <DependentUpon>frmUpdate_Application_Fee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="clsGlobalSettings.cs" />
+    <Compile Include="Controls\ctrlDrivingLicenseApplicationInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ctrlDrivingLicenseApplicationInfo.Designer.cs">
+      <DependentUpon>ctrlDrivingLicenseApplicationInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ctrlPersonCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ctrlPersonCard.Designer.cs">
+      <DependentUpon>ctrlPersonCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ctrlUserCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ctrlUserCard.Designer.cs">
+      <DependentUpon>ctrlUserCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Drivers\frmDisplay_Drivers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Drivers\frmDisplay_Drivers.Designer.cs">
+      <DependentUpon>frmDisplay_Drivers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DVLDDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DVLDDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DVLDDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DVLDDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DVLDDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DVLDDataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogin_Screen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin_Screen.Designer.cs">
+      <DependentUpon>frmLogin_Screen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain_Screen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain_Screen.Designer.cs">
+      <DependentUpon>frmMain_Screen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="International_Licenses\frmInternational_License_Application.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="International_Licenses\frmInternational_License_Application.Designer.cs">
+      <DependentUpon>frmInternational_License_Application.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Licenses\frmIssue_Driver_License_First_Time.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Licenses\frmIssue_Driver_License_First_Time.Designer.cs">
+      <DependentUpon>frmIssue_Driver_License_First_Time.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Licenses\frmLocal_License_Application.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Licenses\frmLocal_License_Application.Designer.cs">
+      <DependentUpon>frmLocal_License_Application.cs</DependentUpon>
+    </Compile>
+    <Compile Include="International_Licenses\frmManage_International_License_Applications.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="International_Licenses\frmManage_International_License_Applications.Designer.cs">
+      <DependentUpon>frmManage_International_License_Applications.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Licenses\frmLost_or_Damaged_License.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Licenses\frmLost_or_Damaged_License.Designer.cs">
+      <DependentUpon>frmLost_or_Damaged_License.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Licenses\frmManage_Local_License_Applications.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Licenses\frmManage_Local_License_Applications.Designer.cs">
+      <DependentUpon>frmManage_Local_License_Applications.cs</DependentUpon>
+    </Compile>
+    <Compile Include="International_Licenses\frmShowInternationalLicense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="International_Licenses\frmShowInternationalLicense.Designer.cs">
+      <DependentUpon>frmShowInternationalLicense.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Licenses\frmRenew_License.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Licenses\frmRenew_License.Designer.cs">
+      <DependentUpon>frmRenew_License.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Licenses\frmShowLicense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Licenses\frmShowLicense.Designer.cs">
+      <DependentUpon>frmShowLicense.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Licenses\frmShow_Issued_Licenses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Licenses\frmShow_Issued_Licenses.Designer.cs">
+      <DependentUpon>frmShow_Issued_Licenses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="People\frmAdd_Update_Person.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="People\frmAdd_Update_Person.Designer.cs">
+      <DependentUpon>frmAdd_Update_Person.cs</DependentUpon>
+    </Compile>
+    <Compile Include="People\frmDelete_Person.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="People\frmDelete_Person.Designer.cs">
+      <DependentUpon>frmDelete_Person.cs</DependentUpon>
+    </Compile>
+    <Compile Include="People\frmDisplayPerson.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="People\frmDisplayPerson.Designer.cs">
+      <DependentUpon>frmDisplayPerson.cs</DependentUpon>
+    </Compile>
+    <Compile Include="People\frmManage_People.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="People\frmManage_People.Designer.cs">
+      <DependentUpon>frmManage_People.cs</DependentUpon>
+    </Compile>
+    <Compile Include="People\frmTakePhoto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="People\frmTakePhoto.Designer.cs">
+      <DependentUpon>frmTakePhoto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Test.Designer.cs">
+      <DependentUpon>Test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tests\frmManage_Test_Types.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tests\frmManage_Test_Types.Designer.cs">
+      <DependentUpon>frmManage_Test_Types.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tests\frmSchedule_Vision_Test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tests\frmSchedule_Vision_Test.Designer.cs">
+      <DependentUpon>frmSchedule_Vision_Test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tests\frmSchedule_Vision_Test2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tests\frmSchedule_Vision_Test2.Designer.cs">
+      <DependentUpon>frmSchedule_Vision_Test2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tests\frmTake_Vision_Test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tests\frmTake_Vision_Test.Designer.cs">
+      <DependentUpon>frmTake_Vision_Test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tests\frmUpdate_Test_Fee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tests\frmUpdate_Test_Fee.Designer.cs">
+      <DependentUpon>frmUpdate_Test_Fee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\frmAdd_Update_User.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\frmAdd_Update_User.Designer.cs">
+      <DependentUpon>frmAdd_Update_User.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\frmChange_Password_&amp;_IsActive.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\frmChange_Password_&amp;_IsActive.Designer.cs">
+      <DependentUpon>frmChange_Password_&amp;_IsActive.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\frmDisplayUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\frmDisplayUser.Designer.cs">
+      <DependentUpon>frmDisplayUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\frmManage_Users.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\frmManage_Users.Designer.cs">
+      <DependentUpon>frmManage_Users.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Applications\frmManage_Application_Types.resx">
+      <DependentUpon>frmManage_Application_Types.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Applications\frmUpdate_Application_Fee.resx">
+      <DependentUpon>frmUpdate_Application_Fee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ctrlDrivingLicenseApplicationInfo.resx">
+      <DependentUpon>ctrlDrivingLicenseApplicationInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ctrlPersonCard.resx">
+      <DependentUpon>ctrlPersonCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ctrlUserCard.resx">
+      <DependentUpon>ctrlUserCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Drivers\frmDisplay_Drivers.resx">
+      <DependentUpon>frmDisplay_Drivers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin_Screen.resx">
+      <DependentUpon>frmLogin_Screen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain_Screen.resx">
+      <DependentUpon>frmMain_Screen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="International_Licenses\frmInternational_License_Application.resx">
+      <DependentUpon>frmInternational_License_Application.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Licenses\frmIssue_Driver_License_First_Time.resx">
+      <DependentUpon>frmIssue_Driver_License_First_Time.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Licenses\frmLocal_License_Application.resx">
+      <DependentUpon>frmLocal_License_Application.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="International_Licenses\frmManage_International_License_Applications.resx">
+      <DependentUpon>frmManage_International_License_Applications.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Licenses\frmLost_or_Damaged_License.resx">
+      <DependentUpon>frmLost_or_Damaged_License.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Licenses\frmManage_Local_License_Applications.resx">
+      <DependentUpon>frmManage_Local_License_Applications.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="International_Licenses\frmShowInternationalLicense.resx">
+      <DependentUpon>frmShowInternationalLicense.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Licenses\frmRenew_License.resx">
+      <DependentUpon>frmRenew_License.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Licenses\frmShowLicense.resx">
+      <DependentUpon>frmShowLicense.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Licenses\frmShow_Issued_Licenses.resx">
+      <DependentUpon>frmShow_Issued_Licenses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="People\frmAdd_Update_Person.resx">
+      <DependentUpon>frmAdd_Update_Person.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="People\frmDelete_Person.resx">
+      <DependentUpon>frmDelete_Person.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="People\frmDisplayPerson.resx">
+      <DependentUpon>frmDisplayPerson.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="People\frmManage_People.resx">
+      <DependentUpon>frmManage_People.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="People\frmTakePhoto.resx">
+      <DependentUpon>frmTakePhoto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Test.resx">
+      <DependentUpon>Test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tests\frmManage_Test_Types.resx">
+      <DependentUpon>frmManage_Test_Types.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tests\frmSchedule_Vision_Test.resx">
+      <DependentUpon>frmSchedule_Vision_Test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tests\frmSchedule_Vision_Test2.resx">
+      <DependentUpon>frmSchedule_Vision_Test2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tests\frmTake_Vision_Test.resx">
+      <DependentUpon>frmTake_Vision_Test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tests\frmUpdate_Test_Fee.resx">
+      <DependentUpon>frmUpdate_Test_Fee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\frmAdd_Update_User.resx">
+      <DependentUpon>frmAdd_Update_User.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\frmChange_Password_&amp;_IsActive.resx">
+      <DependentUpon>frmChange_Password_&amp;_IsActive.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\frmDisplayUser.resx">
+      <DependentUpon>frmDisplayUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\frmManage_Users.resx">
+      <DependentUpon>frmManage_Users.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.manifest" />
+    <None Include="DVLDDataSet.xsc">
+      <DependentUpon>DVLDDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DVLDDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DVLDDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DVLDDataSet.xss">
+      <DependentUpon>DVLDDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DVLDDataSet1.xsc">
+      <DependentUpon>DVLDDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="DVLDDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DVLDDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DVLDDataSet1.xss">
+      <DependentUpon>DVLDDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="DVLDDataSet2.xsc">
+      <DependentUpon>DVLDDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="DVLDDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DVLDDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DVLDDataSet2.xss">
+      <DependentUpon>DVLDDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\images\icons\close_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\images\icons\close_icon %28Custom%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\images\icons\close_icon %28Custom%29 %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\images\icons\close_icon %28Custom%29 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\images\icons\x_icon_172786 %28Custom%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\images\icons\police_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\images\icons\police_icon %28Custom%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Business_Layer\Business_Layer.csproj">
+      <Project>{46e19a80-aebf-421d-8baa-d4c7396bd582}</Project>
+      <Name>Business_Layer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\images\icons\600-cell_graph_H4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\images\icons\Coat_of_arms_of_Egypt__28on_flag_29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\images\icons\dragon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\images\icons\Coat_of_arms_of_Egypt__28on_flag_29 %28Custom%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\images\icons\Coat_of_arms_of_Egypt__28on_flag_29 %28Custom%29 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\images\icons\police-badge-icon-simple-style-vector %28Custom%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\images\icons\0251aaf831e3d2ea0dcbd337e244cbdc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\images\icons\png-clipart-computer-icons-person-user-spark-icon-people-share-icon-thumbnail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\images\icons\878516.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\images\icons\878516.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\images\icons\man %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\images\icons\woman %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\images\icons\eye.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\images\icons\exam.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\images\icons\car.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="packages\Microsoft.Data.SqlClient.SNI.5.2.0\build\net462\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('packages\Microsoft.Data.SqlClient.SNI.5.2.0\build\net462\Microsoft.Data.SqlClient.SNI.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\Microsoft.Data.SqlClient.SNI.5.2.0\build\net462\Microsoft.Data.SqlClient.SNI.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.Data.SqlClient.SNI.5.2.0\build\net462\Microsoft.Data.SqlClient.SNI.targets'))" />
+  </Target>
+</Project>
